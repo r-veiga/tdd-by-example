@@ -28,8 +28,7 @@ public class Money implements Expression {
 
 	@Override
 	public Money reduce(Bank bank, String toCurrency) {
-		int rate = (currency.equals("CHF") && toCurrency.equals("USD")) ? 2 : 1;
-		return new Money(this.amount/rate, toCurrency);
+		return new Money(this.amount / bank.rate(this.currency, toCurrency), toCurrency);
 	}	
 	
 	@Override
